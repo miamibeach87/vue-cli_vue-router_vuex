@@ -1,5 +1,4 @@
-# e-store
-
+# vue.js
 ## Project setup
 ```
 npm install

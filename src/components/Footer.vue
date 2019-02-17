@@ -3,11 +3,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Footer extends Vue {
-  @Prop() private msg!: string;
 }
 </script>
 
@@ -15,5 +14,7 @@ export default class Footer extends Vue {
 footer {
   width: 100%;
   background: black;
+  color: #9c9c9c;
+  padding: 2rem 0 2rem 0;
 }
 </style>

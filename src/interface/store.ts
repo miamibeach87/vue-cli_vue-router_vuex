@@ -1,26 +1,28 @@
 export interface RootState {
   sidebar: SidebarStore;
-  contacts: ContactsStore;
-  prices: PricesStore;
-  market: MarketStore;
+  users: UsersStore;
+  settings: SettingsStore;
 }
 
 export interface SidebarStore {
   opened: boolean;
 }
 
-export interface ContactsStore {
-  mainInfo: {
-    tel: string,
-    tel2: string
-    address: string,
-  };
+export interface UsersStore {
+  usersList: User[];
 }
 
-export interface PricesStore {
-  pricesUrl: string[];
+export interface SettingsStore {
+  headerBgColor: string;
+  headerColor: string;
+  mainBgColor: string;
+  mainColor: string;
+  footerColor: string;
 }
 
-export interface MarketStore {
-  status: string;
+export interface User {
+  id: number;
+  first_name: string;
+  last_name: string;
+  avatar: string;
 }

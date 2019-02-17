@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Home from './components/Home.vue';
+import PageNotFound from './components/PageNotFound.vue';
 
 Vue.use(Router);
 
@@ -14,33 +15,26 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/contacts',
-      name: 'contacts',
+      path: '/users',
+      name: 'users',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Contacts.vue'),
+      component: () => import('./components/Users.vue'),
     },
     {
-      path: '/market',
-      name: 'market',
+      path: '/settings',
+      name: 'settings',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Market.vue'),
-    },
-    {
-      path: '/price-list',
-      name: 'price-list',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Price-list.vue'),
+      component: () => import('./components/Settings.vue'),
     },
     {
       path: '*',
       name: 'not-found',
-      component: () => import(/* webpackChunkName: "about" */ './views/PageNotFound.vue'),
+      component: PageNotFound,
     },
+
   ],
 });

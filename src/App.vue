@@ -9,10 +9,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
-import Header from "@/views/Header.vue";
-import Footer from "@/views/Footer.vue";
-import Sidebar from "@/views/Sidebar.vue";
+import { Component, Vue } from "vue-property-decorator";
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+import Sidebar from "@/components/Sidebar.vue";
 import "normalize.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -41,8 +41,14 @@ export default class Home extends Vue {}
 }
 
 .main-content {
+  display: flex;
+  padding: 0 10vw 0 10vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: calc(100vh - 77px);
   margin-top: 51px;
-  background: springgreen;
+  background: #4dba87;
+  color: black;
 }
 </style>
