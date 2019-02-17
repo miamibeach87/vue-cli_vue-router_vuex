@@ -1,43 +1,32 @@
 <template>
   <aside class="sidebar menu" v-if="isOpen()">
-    <p class="menu-label">
-      General
-    </p>
     <ul class="menu-list">
-      <li><a>Lorem ipsum.</a></li>
-      <li><a>Lorem ipsum dolor.</a></li>
-    </ul>
-    <p class="menu-label">
-      Lorem ipsum
-    </p>
-    <ul class="menu-list">
-      <li><a>Team Settings</a></li>
       <li>
-        <a>Lorem ipsum dolor</a>
-        <ul>
-          <li><a>Lorem ipsum.</a></li>
-          <li><a>Lorem ipsum.</a></li>
-          <li><a>Lorem ipsum.</a></li>
-        </ul>
+        <router-link class="navbar-item" to="/">Home</router-link>
       </li>
-      <li><a>Lorem ipsum.</a></li>
-      <li><a>Lorem ipsum dolor sit.</a></li>
-      <li><a>Lorem ipsum.</a></li>
+      <li>
+        <router-link class="navbar-item" to="/users">Users</router-link>
+      </li>
+      <li>
+        <router-link class="navbar-item" to="/settings">Settings</router-link>
+      </li>
     </ul>
-    <p class="menu-label">
-      Lorem ipsum
-    </p>
-    <ul class="menu-list">
-      <li><a>Lorem ipsum</a></li>
-      <li><a>Lorem ipsum</a></li>
-      <li><a>Lorem ipsum</a></li>
-    </ul>
+    <a class="navbar-item" @click="setDefaultState()">
+      Clear store
+    </a>
   </aside>
 </template>
 <script lang="ts">
   import {Component, Vue} from "vue-property-decorator";
+  import {mapActions} from 'vuex'
 
-  @Component({})
+  @Component({
+    methods: {
+      ...mapActions([
+        'setDefaultState'
+      ])
+    }
+  })
   export default class Sidebar extends Vue {
     constructor() {
       super();

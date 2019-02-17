@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>Available users:</h1>
+    <h1>{{users.length !== 0 ? 'Available users:' : 'No available users'}}</h1>
     <UserListItem v-for="(item, index) in users"
                   :first_name="item.first_name"
                   :last_name="item.last_name"

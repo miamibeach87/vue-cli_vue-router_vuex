@@ -18,7 +18,7 @@
         return this.$route.params['id'];
       },
       user() {
-        return this.$store.getters.getUserById(this.userId);
+        return this.$store.getters.getUserById(this.$route.params['id']);
       }
     }
   })
@@ -36,5 +36,6 @@
 <style scoped lang="scss">
   code {
     color: black;
+    font-size: 9px;
   }
 </style>

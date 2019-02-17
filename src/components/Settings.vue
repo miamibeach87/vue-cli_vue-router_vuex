@@ -64,15 +64,15 @@
       super();
     }
 
-    setHeaderBgColor(event) {
+    setHeaderBgColor(event: any) {
       this.$store.dispatch('setHeaderBgColor', event.target.value);
     }
 
-    setMainBgColor(event) {
+    setMainBgColor(event: any) {
       this.$store.dispatch('setMainBgColor', event.target.value)
     }
 
-    setFooterBgColor(event) {
+    setFooterBgColor(event: any) {
       this.$store.dispatch('setFooterColor', event.target.value)
     }
   }
