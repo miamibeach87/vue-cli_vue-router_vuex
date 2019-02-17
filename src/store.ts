@@ -7,8 +7,8 @@ Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
 
-const store: StoreOptions<RootState> = {
-  state: {
+function initialState() {
+  return {
     sidebar: {
       opened: false,
     },
@@ -16,12 +16,15 @@ const store: StoreOptions<RootState> = {
       usersList: []
     },
     settings: {
-      headerBgColor: '',
-      mainBgColor: '',
-      footerBgColor: '',
+      headerBgColor: 'black',
+      mainBgColor: '#4dba87',
+      footerBgColor: 'black',
     }
+  }
+}
 
-  },
+const store: StoreOptions<RootState> = {
+  state: initialState,
   getters: {
     sidebarIsOpened: (state): boolean => {
       return state.sidebar.opened;
@@ -67,6 +70,13 @@ const store: StoreOptions<RootState> = {
     setFooterColor(state: RootState, color: string): void {
       state.settings.footerBgColor = color;
     },
+    setDefaultState(state: RootState): void {
+      const s = initialState();
+      Object.keys(s).forEach((key: string) => {
+        // @ts-ignore
+        state[key] = s[key]
+      })
+    }
   },
   // Instead of mutating the state, actions commit mutations.
   // Actions can contain arbitrary asynchronous operations.
@@ -74,21 +84,24 @@ const store: StoreOptions<RootState> = {
     toggleSidebar(context): void {
       context.commit('toggleSidebar');
     },
-    setUsers(context): void {
-      context.commit('setUsers');
+    setUsers(context, payload): void {
+      context.commit('setUsers', payload);
     },
-    setAllSettings(context): void {
-      context.commit('setAllSettings');
+    setAllSettings(context, payload): void {
+      context.commit('setAllSettings', payload);
     },
-    setHeaderBgColor(context): void {
-      context.commit('setHeaderBgColor');
+    setHeaderBgColor(context, payload): void {
+      context.commit('setHeaderBgColor', payload);
     },
-    setMainBgColor(context): void {
-      context.commit('setMainBgColor');
+    setMainBgColor(context, payload): void {
+      context.commit('setMainBgColor', payload);
     },
-    setFooterColor(context): void {
-      context.commit('setFooterColor');
-    }
+    setFooterColor(context, payload): void {
+      context.commit('setFooterColor', payload);
+    },
+    setDefaultState(context): void {
+      context.commit('setDefaultState');
+    },
   },
   plugins: debug ? [createLogger({
     collapsed: false,

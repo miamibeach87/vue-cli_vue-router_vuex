@@ -20,6 +20,10 @@
       </div>
 
       <div class="navbar-end">
+        <a class="navbar-item" @click="clearStore()">
+          Clear store
+        </a>
+
         <a class="navbar-item">
           Sign up
         </a>
@@ -32,11 +36,24 @@
 </template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
+  import { mapActions } from 'vuex'
 
-  @Component({})
+  @Component({
+    methods: {
+      ...mapActions([
+        'toggleSidebar', // map `this.increment()` to `this.$store.dispatch('increment')`
+        // `mapActions` also supports payloads:
+        'setDefaultState' // map `this.incrementBy(amount)` to `this.$store.dispatch('incrementBy', amount)`
+      ])
+    }
+  })
   export default class Header extends Vue {
     public openSidebar() {
-      this.$store.commit('toggleSidebar');
+      this.toggleSidebar();
+    }
+
+    public clearStore() {
+      this.setDefaultState();
     }
   }
 </script>

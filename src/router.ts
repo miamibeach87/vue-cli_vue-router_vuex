@@ -20,7 +20,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('./components/Users.vue'),
+      component: () => import(/* webpackChunkName: "usersChunk" */ './components/Users.vue'),
     },
     {
       path: '/settings',
@@ -28,7 +28,7 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('./components/Settings.vue'),
+      component: () => import(/* webpackChunkName: "settingsChunk" */ './components/Settings.vue'),
     },
     {
       path: '*',

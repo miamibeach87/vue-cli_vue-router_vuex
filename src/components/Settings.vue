@@ -10,10 +10,6 @@
     constructor() {
       super();
     }
-
-    private mounted() {
-      console.log("mounted in settings");
-    }
   }
 </script>
 
