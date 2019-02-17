@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import Vuex, {StoreOptions} from 'vuex';
+import Vuex, { StoreOptions } from 'vuex';
 import createLogger from 'vuex/dist/logger';
-import {RootState} from '@/interface/store';
+import { RootState, SettingsStore, User } from '@/interface/store';
 
 Vue.use(Vuex);
 
@@ -17,29 +17,78 @@ const store: StoreOptions<RootState> = {
     },
     settings: {
       headerBgColor: '',
-      headerColor: '',
       mainBgColor: '',
-      mainColor: '',
-      footerColor: 'null',
+      footerBgColor: '',
     }
 
   },
-  mutations: {
-    toggleSidebar(state) {
-      state.sidebar.opened = !state.sidebar.opened;
-    },
-    closeSidebar(state) {
-      state.sidebar.opened = false;
-    },
-    openSidebar(state) {
-      state.sidebar.opened = true;
-    },
-  },
-  actions: {},
   getters: {
-    sidebarIsOpened: (state) => {
+    sidebarIsOpened: (state): boolean => {
       return state.sidebar.opened;
     },
+    getUsers: (state): User[] => {
+      return state.users.usersList;
+    },
+    getUserById: state => (id: number): User | undefined => {
+      return state.users.usersList.find((user: User) => user.id === id);
+    },
+    getAllSettings: (state): SettingsStore | undefined => {
+      return state.settings;
+    },
+    getHeaderBgColorstate: (state): string => {
+      return state.settings.headerBgColor;
+    },
+    getMainBgColor: (state): string => {
+      return state.settings.mainBgColor;
+    },
+    getFooterColor: (state): string => {
+      return state.settings.footerBgColor;
+    },
+  },
+  // The only way to actually change state in a Vuex store is by committing a mutation. Vuex mutations are very
+  // similar to events: each mutation has a string type and a handler. The handler function is where we perform actual
+  // state modifications, and it will receive the state as the first argument:
+  mutations: {
+    toggleSidebar(state): void {
+      state.sidebar.opened = !state.sidebar.opened;
+    },
+    setUsers(state, users: User[]): void {
+      state.users.usersList = users;
+    },
+    setAllSettings(state, settings: SettingsStore): void {
+      state.settings = settings
+    },
+    setHeaderBgColor(state: RootState, color: string): void {
+      state.settings.headerBgColor = color;
+    },
+    setMainBgColor(state: RootState, color: string): void {
+      state.settings.mainBgColor = color;
+    },
+    setFooterColor(state: RootState, color: string): void {
+      state.settings.footerBgColor = color;
+    },
+  },
+  // Instead of mutating the state, actions commit mutations.
+  // Actions can contain arbitrary asynchronous operations.
+  actions: {
+    toggleSidebar(context): void {
+      context.commit('toggleSidebar');
+    },
+    setUsers(context): void {
+      context.commit('setUsers');
+    },
+    setAllSettings(context): void {
+      context.commit('setAllSettings');
+    },
+    setHeaderBgColor(context): void {
+      context.commit('setHeaderBgColor');
+    },
+    setMainBgColor(context): void {
+      context.commit('setMainBgColor');
+    },
+    setFooterColor(context): void {
+      context.commit('setFooterColor');
+    }
   },
   plugins: debug ? [createLogger({
     collapsed: false,

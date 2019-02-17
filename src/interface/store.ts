@@ -14,10 +14,8 @@ export interface UsersStore {
 
 export interface SettingsStore {
   headerBgColor: string;
-  headerColor: string;
   mainBgColor: string;
-  mainColor: string;
-  footerColor: string;
+  footerBgColor: string;
 }
 
 export interface User {
