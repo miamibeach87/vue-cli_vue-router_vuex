@@ -1,11 +1,17 @@
 <template>
-  <footer>Footer</footer>
+  <footer :style="{backgroundColor: getFooterBgColor}">Super cool footer</footer>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-@Component
+@Component({
+  computed: {
+    getFooterBgColor() {
+      return this.$store.getters.getFooterColor;
+    }
+  }
+})
 export default class Footer extends Vue {
 }
 </script>
@@ -15,6 +21,6 @@ footer {
   width: 100%;
   background: black;
   color: #9c9c9c;
-  padding: 2rem 0 2rem 0;
+  padding: 1rem 0;
 }
 </style>

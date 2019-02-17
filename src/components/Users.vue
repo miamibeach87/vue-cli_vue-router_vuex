@@ -1,10 +1,14 @@
 <template>
   <section>
-    <div v-for="(item, index) in users">
-      <UserListItem  :first_name="item.first_name"
-                     :last_name="item.last_name"
-                     :avatar="item.avatar">
-      </UserListItem>
+    <h1>Available users:</h1>
+    <UserListItem v-for="(item, index) in users"
+                  :first_name="item.first_name"
+                  :last_name="item.last_name"
+                  :avatar="item.avatar"
+                  :id="item.id">
+    </UserListItem>
+    <div class="user-info-wrapper">
+      <router-view></router-view>
     </div>
   </section>
 </template>
@@ -18,6 +22,12 @@
     components: {
       UserListItem,
     }
+    // ,
+    // methods: {
+    //   routerGo(id){
+    //     return this.router.push({name: 'profile', params: { id: id } })
+    //   }
+    // }
   })
   export default class Users extends Vue {
     constructor() {
@@ -42,5 +52,4 @@
 </script>
 
 <style scoped lang="scss">
-
 </style>

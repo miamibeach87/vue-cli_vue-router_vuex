@@ -38,7 +38,7 @@ const store: StoreOptions<RootState> = {
     getAllSettings: (state): SettingsStore | undefined => {
       return state.settings;
     },
-    getHeaderBgColorstate: (state): string => {
+    getHeaderBgColor: (state): string => {
       return state.settings.headerBgColor;
     },
     getMainBgColor: (state): string => {

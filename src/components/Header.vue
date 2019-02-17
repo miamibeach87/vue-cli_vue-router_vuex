@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-fixed-top" :style="{backgroundColor: getHeaderBgColor}" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" :href="null" @click="openSidebar()">
+      <a class="navbar-item" :href="null" @click="toggleSidebar()">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Vue.js_Logo.svg/400px-Vue.js_Logo.svg.png" width="40" height="40">
       </a>
 
@@ -20,7 +20,7 @@
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" @click="clearStore()">
+        <a class="navbar-item" @click="setDefaultState()">
           Clear store
         </a>
 
@@ -41,19 +41,19 @@
   @Component({
     methods: {
       ...mapActions([
-        'toggleSidebar', // map `this.increment()` to `this.$store.dispatch('increment')`
-        // `mapActions` also supports payloads:
-        'setDefaultState' // map `this.incrementBy(amount)` to `this.$store.dispatch('incrementBy', amount)`
-      ])
+        'toggleSidebar',
+        'setDefaultState'
+      ]),
+    },
+    computed: {
+      getHeaderBgColor() {
+        return this.$store.getters.getHeaderBgColor;
+      }
     }
   })
   export default class Header extends Vue {
-    public openSidebar() {
-      this.toggleSidebar();
-    }
-
-    public clearStore() {
-      this.setDefaultState();
+    constructor() {
+      super();
     }
   }
 </script>
