@@ -37,7 +37,7 @@
         <button @click="setDefaultState">click</button>
       </li>
       <li>
-        Set default state(async):
+        Set default state(async, 5 sec):
         <button @click="asyncSetDefault">click</button>
       </li>
     </ul>
@@ -66,7 +66,7 @@ import { mapActions } from 'vuex';
         'setDefaultState'
     ]),
     asyncSetDefault() {
-      setTimeout(()=>{this.setDefaultState()}, 4000)
+      setTimeout(()=>{this.setDefaultState()}, 5000)
     }
   },
 })
