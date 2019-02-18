@@ -12,21 +12,21 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    props: {
-      first_name: String,
-      last_name: String,
-      avatar: String,
-      id: Number
-    }
-  })
-  export default class UserListItem extends Vue {
-    constructor() {
-      super();
-    }
+@Component({
+  props: {
+    first_name: String,
+    last_name: String,
+    avatar: String,
+    id: Number,
+  },
+})
+export default class UserListItem extends Vue {
+  constructor() {
+    super();
   }
+}
 </script>
 
 <style scoped lang="scss">

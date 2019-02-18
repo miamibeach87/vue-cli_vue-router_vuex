@@ -13,14 +13,14 @@ function initialState() {
       opened: false,
     },
     users: {
-      usersList: []
+      usersList: [],
     },
     settings: {
       headerBgColor: 'black',
       mainBgColor: '#4dba87',
       footerBgColor: 'black',
-    }
-  }
+    },
+  };
 }
 
 const store: StoreOptions<RootState> = {
@@ -32,7 +32,7 @@ const store: StoreOptions<RootState> = {
     getUsers: (state): User[] => {
       return state.users.usersList;
     },
-    getUserById: state => (id: number): User | undefined => {
+    getUserById: (state) => (id: number): User | undefined => {
       return state.users.usersList.find((user: User) => user.id === id);
     },
     getAllSettings: (state): SettingsStore | undefined => {
@@ -59,7 +59,7 @@ const store: StoreOptions<RootState> = {
       state.users.usersList = users;
     },
     setAllSettings(state, settings: SettingsStore): void {
-      state.settings = settings
+      state.settings = settings;
     },
     setHeaderBgColor(state: RootState, color: string): void {
       state.settings.headerBgColor = color;
@@ -74,9 +74,9 @@ const store: StoreOptions<RootState> = {
       const s = initialState();
       Object.keys(s).forEach((key: string) => {
         // @ts-ignore
-        state[key] = s[key]
-      })
-    }
+        state[key] = s[key];
+      });
+    },
   },
   // Instead of mutating the state, actions commit mutations.
   // Actions can contain arbitrary asynchronous operations.

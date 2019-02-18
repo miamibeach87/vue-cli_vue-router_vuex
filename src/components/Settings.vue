@@ -37,45 +37,45 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from "vue-property-decorator";
-  import { mapActions } from 'vuex'
+import { Component, Vue } from 'vue-property-decorator';
+import { mapActions } from 'vuex';
 
-  @Component({
-    computed: {
-      getHeaderBgColor() {
-        return this.$store.getters.getHeaderBgColor;
-      },
-      getMainBgColor() {
-        return this.$store.getters.getMainBgColor;
-      },
-      getFooterBgColor() {
-        return this.$store.getters.getFooterColor;
-      }
+@Component({
+  computed: {
+    getHeaderBgColor() {
+      return this.$store.getters.getHeaderBgColor;
     },
-    methods: {
-      ...mapActions([
-          'toggleSidebar'
-      ])
-    }
-  })
-  export default class Settings extends Vue {
+    getMainBgColor() {
+      return this.$store.getters.getMainBgColor;
+    },
+    getFooterBgColor() {
+      return this.$store.getters.getFooterColor;
+    },
+  },
+  methods: {
+    ...mapActions([
+        'toggleSidebar',
+    ]),
+  },
+})
+export default class Settings extends Vue {
 
-    constructor() {
-      super();
-    }
-
-    setHeaderBgColor(event: any) {
-      this.$store.dispatch('setHeaderBgColor', event.target.value);
-    }
-
-    setMainBgColor(event: any) {
-      this.$store.dispatch('setMainBgColor', event.target.value)
-    }
-
-    setFooterBgColor(event: any) {
-      this.$store.dispatch('setFooterColor', event.target.value)
-    }
+  constructor() {
+    super();
   }
+
+  public setHeaderBgColor(event: any) {
+    this.$store.dispatch('setHeaderBgColor', event.target.value);
+  }
+
+  public setMainBgColor(event: any) {
+    this.$store.dispatch('setMainBgColor', event.target.value);
+  }
+
+  public setFooterBgColor(event: any) {
+    this.$store.dispatch('setFooterColor', event.target.value);
+  }
+}
 </script>
 
 <style scoped lang="scss">

@@ -6,19 +6,19 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
+import {Component, Vue} from 'vue-property-decorator';
 
-  @Component({
-    data() {
-      return {
-        msg: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut consectetur
-               consequuntur, libero nobis nulla obcaecati perferendis placeat porro quis quod sapiente velit voluptatem. Aliquam
-               asperiores consectetur delectus ex magni.`
-      }
-    }
-  })
-  export default class Home extends Vue {
-  }
+@Component({
+  data() {
+    return {
+      msg: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut consectetur
+             consequuntur, libero nobis nulla obcaecati perferendis placeat porro quis quod sapiente velit voluptatem. Aliquam
+             asperiores consectetur delectus ex magni.`,
+    };
+  },
+})
+export default class Home extends Vue {
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,8 +1,10 @@
 <template>
-  <nav class="navbar is-fixed-top" :style="{backgroundColor: getHeaderBgColor}" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-fixed-top" :style="{backgroundColor: getHeaderBgColor}" role="navigation"
+       aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" :href="null" @click="toggleSidebar()">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Vue.js_Logo.svg/400px-Vue.js_Logo.svg.png" width="40" height="40">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Vue.js_Logo.svg/400px-Vue.js_Logo.svg.png"
+             width="40" height="40">
       </a>
     </div>
 
@@ -30,20 +32,20 @@
 </template>
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator';
-  import { mapActions } from 'vuex'
+  import {mapActions} from 'vuex';
 
   @Component({
     methods: {
       ...mapActions([
         'toggleSidebar',
-        'setDefaultState'
+        'setDefaultState',
       ]),
     },
     computed: {
       getHeaderBgColor() {
         return this.$store.getters.getHeaderBgColor;
-      }
-    }
+      },
+    },
   })
   export default class Header extends Vue {
     constructor() {
@@ -52,20 +54,20 @@
   }
 </script>
 <style scoped lang="scss">
-.navbar {
-  background: black;
+  .navbar {
+    background: black;
 
-  .navbar-item {
-    color: #9c9c9c;
+    .navbar-item {
+      color: #9c9c9c;
 
-    &:hover {
-      background: #4dba87;
-      color: black;
+      &:hover {
+        background: #4dba87;
+        color: black;
+      }
     }
   }
-}
 
-li {
-  color: white;
-}
+  li {
+    color: white;
+  }
 </style>

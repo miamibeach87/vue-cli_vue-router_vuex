@@ -10,27 +10,27 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    computed: {
-      userId() {
-        return this.$route.params['id'];
-      },
-      user() {
-        return this.$store.getters.getUserById(this.$route.params['id']);
-      }
-    }
-  })
-  export default class UserProfile extends Vue {
-    constructor() {
-      super();
-    }
-
-    get users() {
-      return this.$store.getters.getUsers;
-    }
+@Component({
+  computed: {
+    userId() {
+      return this.$route.params.id;
+    },
+    user() {
+      return this.$store.getters.getUserById(this.$route.params.id);
+    },
+  },
+})
+export default class UserProfile extends Vue {
+  constructor() {
+    super();
   }
+
+  get users() {
+    return this.$store.getters.getUsers;
+  }
+}
 </script>
 
 <style scoped lang="scss">

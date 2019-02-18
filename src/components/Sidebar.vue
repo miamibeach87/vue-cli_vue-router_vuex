@@ -17,34 +17,34 @@
   </aside>
 </template>
 <script lang="ts">
-  import {Component, Vue} from "vue-property-decorator";
-  import {mapActions} from 'vuex'
+import {Component, Vue} from 'vue-property-decorator';
+import {mapActions} from 'vuex';
 
-  @Component({
-    methods: {
-      ...mapActions([
-        'setDefaultState'
-      ])
-    }
-  })
-  export default class Sidebar extends Vue {
-    constructor() {
-      super();
-    }
-
-    public isOpen() {
-      return this.$store.getters.sidebarIsOpened;
-    }
-
-    public closeSidebar() {
-      this.$store.commit("closeSidebar");
-      console.log("after close", this.isOpen());
-    }
-
-    private mounted() {
-      console.log("mounted", this.isOpen());
-    }
+@Component({
+  methods: {
+    ...mapActions([
+      'setDefaultState',
+    ]),
+  },
+})
+export default class Sidebar extends Vue {
+  constructor() {
+    super();
   }
+
+  public isOpen() {
+    return this.$store.getters.sidebarIsOpened;
+  }
+
+  public closeSidebar() {
+    this.$store.commit('closeSidebar');
+    console.log('after close', this.isOpen());
+  }
+
+  private mounted() {
+    console.log('mounted', this.isOpen());
+  }
+}
 </script>
 <style scoped lang="scss">
   aside {

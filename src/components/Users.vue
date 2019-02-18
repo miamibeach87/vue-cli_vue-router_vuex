@@ -14,41 +14,35 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import axios from 'axios';
-  import UserListItem from '@/components/UserListItem.vue';
+import { Component, Vue } from 'vue-property-decorator';
+import axios from 'axios';
+import UserListItem from '@/components/UserListItem.vue';
 
-  @Component({
-    components: {
-      UserListItem,
-    }
-    // ,
-    // methods: {
-    //   routerGo(id){
-    //     return this.router.push({name: 'profile', params: { id: id } })
-    //   }
-    // }
-  })
-  export default class Users extends Vue {
-    constructor() {
-      super();
-    }
-
-    get users() {
-      return this.$store.getters.getUsers;
-    }
-
-    private mounted() {
-      console.log('Im mounded and I will call BE');
-      axios
-          .get('https://reqres.in/api/users?page=1')
-          .then((response) => {
-            console.log(response.data.data);
-            this.$store.dispatch('setUsers', response.data.data)
-          })
-          .catch(error => console.log(error));
-    }
+@Component({
+  components: {
+    UserListItem,
   }
+})
+export default class Users extends Vue {
+  constructor() {
+    super();
+  }
+
+  get users() {
+    return this.$store.getters.getUsers;
+  }
+
+  private mounted() {
+    console.log('Im mounded and I will call BE');
+    axios
+        .get('https://reqres.in/api/users?page=1')
+        .then((response) => {
+          console.log(response.data.data);
+          this.$store.dispatch('setUsers', response.data.data);
+        })
+        .catch((error) => console.log(error));
+  }
+}
 </script>
 
 <style scoped lang="scss">

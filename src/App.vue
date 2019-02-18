@@ -9,33 +9,33 @@
   </div>
 </template>
 <script lang="ts">
-  import { Component, Vue } from "vue-property-decorator";
-  import Header from "@/components/Header.vue";
-  import Footer from "@/components/Footer.vue";
-  import Sidebar from "@/components/Sidebar.vue";
-  import "normalize.css";
-  import { library } from "@fortawesome/fontawesome-svg-core";
-  import { fas } from "@fortawesome/free-solid-svg-icons";
-  import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { Component, Vue } from 'vue-property-decorator';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import Sidebar from '@/components/Sidebar.vue';
+import 'normalize.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-  library.add(fas);
+library.add(fas);
 
-  Vue.component("font-awesome-icon", FontAwesomeIcon as any);
+Vue.component('font-awesome-icon', FontAwesomeIcon as any);
 
-  @Component({
-    components: {
-      Header,
-      Footer,
-      Sidebar,
+@Component({
+  components: {
+    Header,
+    Footer,
+    Sidebar,
+  },
+  computed: {
+    getMainBgColor() {
+      return this.$store.getters.getMainBgColor;
     },
-    computed: {
-      getMainBgColor() {
-        return this.$store.getters.getMainBgColor;
-      },
-    }
-  })
-  export default class Home extends Vue {
-  }
+  },
+})
+export default class Home extends Vue {
+}
 </script>
 <style lang="scss">
   #app {

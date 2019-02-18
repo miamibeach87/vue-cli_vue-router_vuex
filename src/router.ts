@@ -28,9 +28,9 @@ export default new Router({
           // when /user/:id/profile is matched
           path: ':id/profile',
           name: 'profile',
-          component: UserProfile
+          component:() => import(/* webpackChunkName: "userProfileChunk" */ './components/UserProfile.vue'),
         },
-      ]
+      ],
     },
     {
       path: '/settings',
