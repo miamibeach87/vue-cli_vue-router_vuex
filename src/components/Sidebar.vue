@@ -54,5 +54,6 @@ export default class Sidebar extends Vue {
     width: auto;
     background: black;
     padding-top: 10px;
+    margin-top: 1px;
   }
 </style>

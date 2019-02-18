@@ -1,5 +1,4 @@
 <template>
-
   <div class="i-user" @click="$router.push({name: 'profile', params: { id: id }})">
     <figure class="image is-48x48">
       <img class="is-rounded" :src="avatar" alt="avatar">

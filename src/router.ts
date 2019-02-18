@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './components/Home.vue';
 import PageNotFound from './components/PageNotFound.vue';
-import UserProfile from '@/components/UserProfile.vue';
 
 Vue.use(Router);
 

@@ -32,6 +32,14 @@
         Toggle sidebar:
         <button @click="toggleSidebar">click</button>
       </li>
+      <li>
+        Set default state:
+        <button @click="setDefaultState">click</button>
+      </li>
+      <li>
+        Set default state(async):
+        <button @click="asyncSetDefault">click</button>
+      </li>
     </ul>
   </div>
 </template>
@@ -55,7 +63,11 @@ import { mapActions } from 'vuex';
   methods: {
     ...mapActions([
         'toggleSidebar',
+        'setDefaultState'
     ]),
+    asyncSetDefault() {
+      setTimeout(()=>{this.setDefaultState()}, 4000)
+    }
   },
 })
 export default class Settings extends Vue {
